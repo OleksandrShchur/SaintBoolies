@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SaintBoolies.Core.IServices;
+using SaintBoolies.Core.Services;
 using SaintBoolies.Db;
 using SaintBoolies.Db.Contexts;
 
@@ -29,6 +31,10 @@ namespace SaintBoolies
             });
 
             services.AddControllers();
+
+            #region Configure our services...
+            services.AddScoped<IUserService, UserService>();
+            #endregion
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
