@@ -19,7 +19,7 @@ namespace SaintBoolies.Controllers
 
         [HttpPost]
         [Route("AddUser")]
-        public async Task<IActionResult> Register([FromBody] User user)
+        public async Task<IActionResult> AddUser(User user)
         {
             return Ok(await _userService.Create(user));
         }
