@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.10">
       <PrivateAssets>all</PrivateAssets>

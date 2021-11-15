@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SaintBoolies.Core.IServices;
 using SaintBoolies.Shared.Models;
 using SaintBoolies.Shared.ViewModels;
@@ -11,24 +12,32 @@ namespace SaintBoolies.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService userService)
+        public UserController(
+            IUserService userService,
+            IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpPost]
         [Route("AddUser")]
-        public async Task<IActionResult> AddUser(User user)
+        public async Task<IActionResult> AddUser(UserRegistrationViewModel user)
         {
-            return Ok(await _userService.Create(user));
+            var result = await _userService.Create(user);
+
+            return Ok(result);
         }
 
         [HttpGet]
         [Route("GetUsers")]
         public IActionResult GetUsers()
         {
-            return Ok(_userService.GetAllUsers());
+            var result = _userService.GetAllUsers();
+
+            return Ok(result);
         }
 
         [HttpPost]

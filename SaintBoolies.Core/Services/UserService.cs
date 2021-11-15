@@ -19,16 +19,18 @@ namespace SaintBoolies.Core.Services
 
         }
 
-        public async Task<User> Create(User user)
+        public async Task<User> Create(UserRegistrationViewModel user)
         {
-            if (UserExistence(user))
+            if (UserExistence(user.Email))
             {
                 throw new Exception("User already exist in database");
             }
 
-            (user.Password, user.Salt) = PasswordHasher.GenerateHash(user.Password);
+            var newUser = new User();
+            newUser.Login = user.NickName;
+            (newUser.Password, newUser.Salt) = PasswordHasher.GenerateHash(user.Password);
 
-            var result = await InsertAsync(user);
+            var result = await InsertAsync(newUser);
 
             if (result.Email != user.Email || result.Id == 0 || result.Id == null)
             {
@@ -54,7 +56,7 @@ namespace SaintBoolies.Core.Services
             return userFromDb;
         }
 
-        private bool UserExistence(User user) =>
-            GetByEmail(user.Email) != null && !string.IsNullOrEmpty(user.Email);
+        private bool UserExistence(string email) =>
+            GetByEmail(email) != null && !string.IsNullOrEmpty(email);
     }
 }
