@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-
+import Sidebar from './components/Sidebar';
+import Note from './components/Note';
 import './custom.css'
 
 export default class App extends Component {
@@ -10,9 +11,10 @@ export default class App extends Component {
 
   render () {
     return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-      </Layout>
+      <div className="App">
+        <Sidebar /> 
+      <Note />
+      </div>
     );
   }
 }
