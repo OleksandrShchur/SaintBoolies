@@ -6,10 +6,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SaintBoolies.Core.IServices;
+using SaintBoolies.Core.Services;
 using Microsoft.OpenApi.Models;
 using SaintBoolies.Db;
 using SaintBoolies.Db.Contexts;
 using System;
+using AutoMapper;
+using SaintBoolies.Mapping;
 
 namespace SaintBoolies
 {
@@ -32,6 +36,10 @@ namespace SaintBoolies
 
             services.AddControllers();
 
+            #region Configure our services...
+            services.AddScoped<IUserService, UserService>();
+            #endregion
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -47,6 +55,15 @@ namespace SaintBoolies
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            // register AutoMapper
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new UserMapperProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

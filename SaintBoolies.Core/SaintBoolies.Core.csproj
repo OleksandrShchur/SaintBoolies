@@ -5,7 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SaintBoolies.Db\SaintBoolies.Db.csproj" />
+    <ProjectReference Include="..\SaintBoolies.Shared\SaintBoolies.Shared.csproj" />
   </ItemGroup>
 
 </Project>
