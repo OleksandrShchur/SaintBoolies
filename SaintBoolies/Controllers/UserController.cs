@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SaintBoolies.Core.IServices;
-using SaintBoolies.Shared.Models;
 using SaintBoolies.Shared.ViewModels;
 using System.Threading.Tasks;
 
@@ -12,7 +11,6 @@ namespace SaintBoolies.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
-        private readonly IMapper _mapper;
 
         public UserController(
             IUserService userService,

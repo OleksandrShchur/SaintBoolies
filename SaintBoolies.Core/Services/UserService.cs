@@ -1,4 +1,5 @@
-﻿using SaintBoolies.Core.Infrustructure;
+﻿using AutoMapper;
+using SaintBoolies.Core.Infrustructure;
 using SaintBoolies.Core.IServices;
 using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
@@ -12,11 +13,13 @@ namespace SaintBoolies.Core.Services
 {
     public class UserService : BaseService<User>, IUserService
     {
+        private readonly IMapper _mapper;
         public UserService(
-            AppDbContext context)
+            AppDbContext context,
+            IMapper mapper)
             : base(context)
         {
-
+            _mapper = mapper;
         }
 
         public async Task<User> Create(UserRegistrationViewModel user)
@@ -26,13 +29,13 @@ namespace SaintBoolies.Core.Services
                 throw new Exception("User already exist in database");
             }
 
-            var newUser = new User();
-            newUser.Login = user.NickName;
-            (newUser.Password, newUser.Salt) = PasswordHasher.GenerateHash(user.Password);
+            var userToAdd = _mapper.Map<UserRegistrationViewModel, User>(user);
 
-            var result = await InsertAsync(newUser);
+            (userToAdd.Password, userToAdd.Salt) = PasswordHasher.GenerateHash(user.Password);
 
-            if (result.Email != user.Email || result.Id == 0 || result.Id == null)
+            var result = await InsertAsync(userToAdd);
+
+            if (result.Email != user.Email)
             {
                 throw new Exception("Adding failed");
             }
@@ -42,9 +45,16 @@ namespace SaintBoolies.Core.Services
 
         public User GetByEmail(string email) => _context.Users.FirstOrDefault(u => u.Email == email);
 
-        public List<User> GetAllUsers() => _context.Users.ToList();
+        public List<UserListViewModel> GetAllUsers()
+        {
+            var users = _context.Users
+                .Select(u => _mapper.Map<User, UserListViewModel>(u))
+                .ToList();
 
-        public User Authenticate(UserLoginViewModel user)
+            return users;
+        }
+
+        public UserProfileViewModel Authenticate(UserLoginViewModel user)
         {
             var userFromDb = GetByEmail(user.Email);
 
@@ -53,7 +63,9 @@ namespace SaintBoolies.Core.Services
                 throw new Exception("Passwords does not match");
             }
 
-            return userFromDb;
+            var mappedUser = _mapper.Map<User, UserProfileViewModel>(userFromDb);
+
+            return mappedUser;
         }
 
         private bool UserExistence(string email) =>
