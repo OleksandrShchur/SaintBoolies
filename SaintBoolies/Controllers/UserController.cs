@@ -17,7 +17,6 @@ namespace SaintBoolies.Controllers
             IMapper mapper)
         {
             _userService = userService;
-            _mapper = mapper;
         }
 
         [HttpPost]
