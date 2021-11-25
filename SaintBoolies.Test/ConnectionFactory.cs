@@ -4,7 +4,7 @@ using System;
 
 namespace SaintBoolies.Test
 {
-    public class ConnectionFactory : IDisposable
+    internal class ConnectionFactory : IDisposable
     {
         private bool disposedValue = false;
 
