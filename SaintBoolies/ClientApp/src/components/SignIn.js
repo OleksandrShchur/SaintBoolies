@@ -1,31 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function SignIn() {
 
   return (
     <div className="LoginBox">
-    <div className="ItemBox">
-      <div className="FormHeader">
-        <p>Sign In</p>
+      <div className="ItemBox">
+
+        <div className="FormHeader">
+          <p>Sign In</p>
+        </div>
+
+        <form className="InputBox">
+          <div>
+            <input type="email" name="email" placeholder="Email@yahoo.com" className="FormItem InputForm"/>
+          </div>
+          <div>
+            <input type="password" name="password" placeholder="Password" className="FormItem InputForm"/>
+          </div>
+
+          <div>
+            <button className="FormItem LoginButtom">Sign In</button>
+          </div>
+        </form>
+        <div className="Description">
+          <p>Are you not registered? <Link to path="/">Sign Up</Link></p>
+        </div>
       </div>
-      <form className="InputBox">
-        <div className="FormItem">
-          <input type="email" name="email" placeholder="email" className="inputForm "/>
-        </div>
-        <div className="FormItem">
-          <input type="password" name="password" placeholder="password" className="inputForm "/>
-        </div>
-        <div className="FormItem">
-          <button>Sign In</button>
-        </div>
-      </form>
-      <div className="Description">
-        <p>
-          No account?
-          <a href="#"> Sign Up</a>
-        </p>
-      </div>
-    </div>
     </div>  
   );
 }

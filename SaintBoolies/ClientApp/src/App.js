@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
+import { BrowseRouter, Route, Redirect, Switch, BrowserRouter } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import Sidebar from './components/Sidebar';
@@ -14,14 +14,12 @@ export default class App extends Component {
 
   render () {
     return (
-      <div className="App">
-        <Sidebar /> 
-    <Note /> 
-        {
-          //<SignIn />
-          //<SignUp />
-        }
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route patn="/" Component = {SignIn} />
+          <Route path="/SignUp" Component = {SignUp} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

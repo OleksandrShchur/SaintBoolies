@@ -78,59 +78,61 @@ form{
   padding:15px;
 }
 
-/* Login/Register form */
+* Login/Register form */
 .LoginBox {
-  margin: 69px auto;
-  width: 615px;
-  height: 942px;
+  margin: 50px auto;
+  width: 420px;
+  height: auto;
   background: rgba(110, 189, 245, 0.3);
-  box-sizing: border-box;
-  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
-  border: 5px solid #6ebdf5;
+  border: 2px solid #6ebdf5;
+  border-radius: 10px;
 }
 
 .FormHeader {
-  margin-top: 53px;
-  font-size: 72px;
+  margin-top: 10px;
+  font-size: 56px;
   text-align: center;
-  color: #00ccff;
+  font-weight: 700;
 }
 
-.inputForm {
-  font-size: 48px;
-  color: rgba(0, 204, 255, 0.3);
-  padding: 17px 25px;
-  width: 447px;
-  margin-left: 54px;
-  background-color: #e6eff5;
+.FormHeader > p {
+  margin-bottom: 20px;
+}
+
+.FormItem {
+  height: 50px;
+  font-size: 24px;
+  padding: 0px 15px;
+  width: 380px;
+  margin-left: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-style: none;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
-.FormItem + .FormItem {
-  margin-top: 30px;
+.InputForm {
+  background-color: #f0f9ff;
 }
 
-button {
-  font-size: 48px;
-  padding: 20px;
+.LoginButtom {
+  font-weight: 600;
   color: #ffffff;
   background-color: #6ebdf5;
-  border-style: none;
-  border-radius: 25px;
-  width: 304px;
-  margin-left: 25%;
 }
 
 .Description {
-  font-size: 48px;
+  font-size: 22px;
   text-align: center;
   color: rgba(0, 0, 0, 0.65);
 }
 
 a {
   text-decoration: none;
+  color: #00ccff;
+}
+
+a:hover {
   color: #00ccff;
 }
 
