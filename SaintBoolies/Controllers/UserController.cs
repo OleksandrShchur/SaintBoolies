@@ -13,11 +13,9 @@ namespace SaintBoolies.Controllers
         private readonly IUserService _userService;
 
         public UserController(
-            IUserService userService,
-            IMapper mapper)
+            IUserService userService)
         {
             _userService = userService;
-            _mapper = mapper;
         }
 
         [HttpPost]
