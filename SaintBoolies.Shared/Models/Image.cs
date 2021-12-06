@@ -9,9 +9,7 @@ namespace SaintBoolies.Shared.Models
     public class Image
     {
         public int Id { get; set; }
-        public string Url { get; set; }
-        public int NoteId { get; set; }
-        public Note Note { get; set; }
 
+        public string Url { get; set; }
     }
 }
