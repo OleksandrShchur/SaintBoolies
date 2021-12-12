@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SaintBoolies.Db.Contexts;
@@ -10,6 +11,7 @@ namespace SaintBoolies.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GroupController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -91,6 +93,7 @@ namespace SaintBoolies.Controllers
             return NoContent();
         }
 
+        [NonAction]
         private bool GroupExists(int id)
         {
             return _context.Groups.Any(e => e.Id == id);
