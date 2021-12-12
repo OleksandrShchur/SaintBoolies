@@ -1,14 +1,66 @@
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  color: #E01A76;
+body {
+  background-color: #e4e4e4;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+/* StartPage Styles */
+
+.Container {
+  width: 100%;
+}
+
+.HeaderStartPage {
+  font-size: 28px;
+  text-align: center;
+  font-weight: 700;
+  border-bottom: 1px solid #128EE5;
+}
+
+.HeaderText {
+  padding: 12px 0px;
+  margin: 0;
+}
+
+.ContentStartPage {
+  width: 768px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+div.ContentStartPage > h1 {
+  margin-bottom: 20px;
+}
+
+.ImageStartPage {
+  background-image: url(img/limit20blocks.jpg);
+  width: 100%;
+  height: 400px;
+  margin: 14px 0px;
+}
+
+.ButtonBlock {
+  margin-bottom: 16px;
+}
+
+div.ButtonBlock > button {
+  margin: 0 10px;
+}
+
+.FooterStartPage {
+  font-size: 28px;
+  text-align: center;
+  border-top: 1px solid #128EE5;
+}
+
+div.FooterStartPage > p {
+  font-size: 14px;
+  padding: 10px 0;
+  margin: 0;
 }
