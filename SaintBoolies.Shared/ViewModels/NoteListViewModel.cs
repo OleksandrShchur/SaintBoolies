@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace SaintBoolies.Shared.Models
+namespace SaintBoolies.Shared.ViewModels
 {
-    public class Note
+    public class NoteListViewModel
     {
         public int Id { get; set; }
 
@@ -13,9 +12,6 @@ namespace SaintBoolies.Shared.Models
 
         public string Text { get; set; }
 
-        public int GroupId { get; set; }
-
-        public IList<Image> Images { get; set; }
-
+        public string GroupName { get; set; }
     }
 }

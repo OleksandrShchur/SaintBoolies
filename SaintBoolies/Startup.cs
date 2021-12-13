@@ -6,10 +6,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SaintBoolies.Core.IServices;
+using SaintBoolies.Core.Services;
 using Microsoft.OpenApi.Models;
 using SaintBoolies.Db;
 using SaintBoolies.Db.Contexts;
 using System;
+using AutoMapper;
+using SaintBoolies.Mapping;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SaintBoolies
 {
@@ -30,7 +35,18 @@ namespace SaintBoolies
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/User/Login");
+                    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/");
+                });
+
             services.AddControllers();
+
+            #region Configure our services...
+            services.AddScoped<IUserService, UserService>();
+            #endregion
 
             services.AddSwaggerGen(c =>
             {
@@ -47,6 +63,15 @@ namespace SaintBoolies
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            // register AutoMapper
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new UserMapperProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +93,8 @@ namespace SaintBoolies
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
