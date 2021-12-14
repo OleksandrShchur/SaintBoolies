@@ -10,11 +10,16 @@ namespace SaintBoolies.Core.IServices
 {
     public interface IGroupService
     {
-        Task<ActionResult<IEnumerable<Group>>> GetGroups();
-        Task<ActionResult<Group>> GetGroup(int id);
-        Task<IActionResult> PutGroup(int id, Group @group);
-        Task<ActionResult<Group>> PostGroup(Group @group);
-        Task<IActionResult> DeleteGroup(int id);
-        bool GroupExists(int id);
+        Task<IEnumerable<Group>> GetAllGroups();
+
+        Task<Group> GetOneGroup(int id);
+
+        Task PutOneGroup(int id, Group @group);
+
+        Task PostOneGroup(Group @group);
+
+        Task DeleteOneGroup(int id);
+
+        bool IfGroupExists(int id);
     }
 }

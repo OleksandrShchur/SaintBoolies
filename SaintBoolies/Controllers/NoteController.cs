@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SaintBoolies.Core.IServices;
 using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
 
@@ -14,30 +15,27 @@ namespace SaintBoolies.Controllers
     [Authorize]
     public class NoteController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly INoteService _noteService;
 
-        public NoteController(AppDbContext context)
+        public NoteController(INoteService noteService)
         {
-            _context = context;
+            _noteService = noteService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Note>>> GetNotes()
         {
-            return await _context.Notes.ToListAsync();
+            return Ok(await _noteService.GetAllNotes());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Note>> GetNote(int id)
         {
-            var note = await _context.Notes.FindAsync(id);
-
+            var note = await _noteService.GetOneNote(id);
             if (note == null)
-            {
                 return NotFound();
-            }
 
-            return note;
+            return Ok(note);
         }
 
         [HttpPut("{id}")]
@@ -48,23 +46,12 @@ namespace SaintBoolies.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(note).State = EntityState.Modified;
+            if (!_noteService.IfNoteExists(id))
+            {
+                return NotFound();
+            }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NoteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _noteService.PutOneNote(id, note);
 
             return NoContent();
         }
@@ -72,8 +59,7 @@ namespace SaintBoolies.Controllers
         [HttpPost]
         public async Task<ActionResult<Note>> PostNote(Note note)
         {
-            _context.Notes.Add(note);
-            await _context.SaveChangesAsync();
+            await _noteService.PostOneNote(note);
 
             return CreatedAtAction("GetNote", new { id = note.Id }, note);
         }
@@ -81,22 +67,15 @@ namespace SaintBoolies.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNote(int id)
         {
-            var note = await _context.Notes.FindAsync(id);
-            if (note == null)
-            {
-                return NotFound();
-            }
+            await _noteService.DeleteOneNote(id);
 
-            _context.Notes.Remove(note);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok();
         }
 
         [NonAction]
         private bool NoteExists(int id)
         {
-            return _context.Notes.Any(e => e.Id == id);
+            return _noteService.IfNoteExists(id);
         }
     }
 }
