@@ -99,3 +99,18 @@ div.FooterStartPage > p {
 .LoginButton > Button {
   background-color: #128EE5;
 }
+
+/* RedirectBackToHome Styles */
+
+.BackButton {
+  position: absolute;
+  width: 120px;
+  font-size: 22px;
+  padding: 10px 20px 14px 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.BackButton:hover {
+  background-color: #b8b5b5;
+}
