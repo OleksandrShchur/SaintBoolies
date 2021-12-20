@@ -98,7 +98,7 @@ a:hover{
 
 .btnfloat{
   float:right;
-  opacity: 0;
+  opacity: 0.2;
 }
 
 .btnfloat:hover{

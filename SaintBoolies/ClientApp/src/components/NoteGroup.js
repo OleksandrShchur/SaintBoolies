@@ -7,13 +7,13 @@ import AlertEditName from './AlertEditName'
 function NoteGroup(props) {
     return (
         <div class='notes group'>
-        {props.text}
-        <a href='#' class='btnfloat'><img class='btn' fill="#128EE5" src={del}/></a>
-        <a href='#' class='btnfloat'><AlertEditName/></a>
-        <a href='#' class='btnfloat'><img class='btn' fill="#128EE5" src={nev}/></a>
-        <svg height="25" width="25" class="trngl">
-            <polygon points="12,7 5,20 20,20" class="triangle" fill="#128EE5"/>
-        </svg>
+            {props.text}
+            <a class='btnfloat'><img class='btn' fill="#128EE5" src={del} /></a>
+            <a class='btnfloat'><AlertEditName /></a>
+            <a class='btnfloat'><img class='btn' fill="#128EE5" src={nev} /></a>
+            <svg height="25" width="25" class="trngl">
+                <polygon points="12,7 5,20 20,20" class="triangle" fill="#128EE5" />
+            </svg>
         </div>
     )
 }
