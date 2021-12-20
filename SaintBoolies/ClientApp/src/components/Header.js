@@ -1,14 +1,14 @@
-import React from 'react'
 
-const Header = ({ title }) => {
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Header = () => {
     return (
-      <div class="header">
-
-        <div class='title'>
-          ffffffff
+        <div className='HeaderStartPage'>
+          <Link path to='/' style={{ textDecoration: 'none' }}>
+              <p className='HeaderText'>Duly Noted</p>
+          </Link>
         </div>
-      </div>
     );
   };
 
-export default Header
