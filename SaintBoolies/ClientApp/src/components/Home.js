@@ -12,7 +12,7 @@ export class Home extends Component {
       <div className='Container'>
         <Header />
 
-        <div className='ContentStartPage'>
+        <div className='Content'>
 
           <div className='ImageStartPage'></div>  
           <h1>You've got things to save? Duly Noted!</h1>

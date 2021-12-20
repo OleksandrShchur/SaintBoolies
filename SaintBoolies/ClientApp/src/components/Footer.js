@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div className='FooterStartPage'>
-            <div class='Description'>
+            <div className='Description'>
                 <div>All rights reserved</div>
-                <div class='DescriptionSeparator'>|</div>
+                <div className='DescriptionSeparator'>|</div>
                 <div>{(new Date().getFullYear())}</div>
             </div>
             <div class='Description DescriptionLinks'>

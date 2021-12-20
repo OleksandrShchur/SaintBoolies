@@ -8,10 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background-color: #e4e4e4;
-}
-
 /* StartPage Styles */
 
 .Container {
@@ -30,7 +26,7 @@ body {
   margin: 0;
 }
 
-.ContentStartPage {
+.Content {
   width: 768px;
   margin: 0 auto;
   text-align: center;
@@ -118,6 +114,7 @@ div.FooterStartPage > p {
 /* Footer Styles */
 
 .FooterStartPage {
+  height: 100%;
   padding: 6px 0px;
 }
 
@@ -130,4 +127,14 @@ div.FooterStartPage > p {
 .Description > div {
   display: table-cell;
   padding: 2px 6px;
+}
+
+/* AboutUs Styles */
+
+.Padding10 {
+  padding: 10px 0px;  
+}
+
+.AboutUsText {
+  padding-bottom: 12px;
 }
