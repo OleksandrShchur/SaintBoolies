@@ -25,10 +25,10 @@ namespace SaintBoolies.Core.Services
 
 		public async Task DeleteOneGroup(int id)
 		{
-			var @group = await _context.Groups.FindAsync(id);
-			if (@group != null)
+			var group = await _context.Groups.FindAsync(id);
+			if (group != null)
 			{
-				_context.Groups.Remove(@group);
+				_context.Groups.Remove(group);
 				await _context.SaveChangesAsync();
 			}
 
@@ -41,14 +41,14 @@ namespace SaintBoolies.Core.Services
 
 		public async Task<Group> GetOneGroup(int id)
 		{
-			var @group = await _context.Groups.FindAsync(id);
+			var group = await _context.Groups.FindAsync(id);
 
-			if (@group == null)
+			if (group == null)
 			{
 				return null;
 			}
 
-			return @group;
+			return group;
 		}
 
 		public bool IfGroupExists(int id)
@@ -58,13 +58,13 @@ namespace SaintBoolies.Core.Services
 
 		public async Task PostOneGroup(Group group)
 		{
-			_context.Groups.Add(@group);
+			_context.Groups.Add(group);
 			await _context.SaveChangesAsync();
 		}
 
 		public async Task PutOneGroup(int id, Group group)
 		{
-			_context.Entry(@group).State = EntityState.Modified;
+			_context.Entry(group).State = EntityState.Modified;
 
 			try
 			{

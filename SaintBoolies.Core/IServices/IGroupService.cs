@@ -14,9 +14,9 @@ namespace SaintBoolies.Core.IServices
 
         Task<Group> GetOneGroup(int id);
 
-        Task PutOneGroup(int id, Group @group);
+        Task PutOneGroup(int id, Group group);
 
-        Task PostOneGroup(Group @group);
+        Task PostOneGroup(Group group);
 
         Task DeleteOneGroup(int id);
 
