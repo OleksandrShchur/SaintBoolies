@@ -88,6 +88,11 @@ namespace SaintBoolies
                 app.UseHsts();
             }
 
+            app.UseCors(x => x
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials());
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -98,9 +103,11 @@ namespace SaintBoolies
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints
+                    .MapControllerRoute(
+                        name: "default",
+                        pattern: "{controller}/{action=Index}/{id?}")
+                    .RequireAuthorization();
             });
 
             app.UseSwagger();
