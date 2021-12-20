@@ -114,3 +114,20 @@ div.FooterStartPage > p {
 .BackButton:hover {
   background-color: #b8b5b5;
 }
+
+/* Footer Styles */
+
+.FooterStartPage {
+  padding: 6px 0px;
+}
+
+.Description {
+  margin: 0 auto;
+  display: table;
+  font-size: 14px;
+}
+
+.Description > div {
+  display: table-cell;
+  padding: 2px 6px;
+}

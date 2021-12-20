@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Header from './Header';
+import Footer from './Footer';
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -8,9 +10,7 @@ export class Home extends Component {
   render () {
     return (
       <div className='Container'>
-        <div className='HeaderStartPage'>
-          <p className='HeaderText'>Duly Noted</p>
-        </div>
+        <Header />
 
         <div className='ContentStartPage'>
 
@@ -43,9 +43,7 @@ export class Home extends Component {
 
         </div>
         
-        <div className='FooterStartPage'>
-          <p>All rights reserved</p>
-        </div>
+        <Footer />
 
       </div>
     );
