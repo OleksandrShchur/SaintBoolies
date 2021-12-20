@@ -141,6 +141,10 @@ div.scroll{
   margin:0px 20px;
 }
 
+.editnote{
+min-width: 300px;
+}
+
 .frmxt{
   font-size: 24px;
   max-width: 300px;
