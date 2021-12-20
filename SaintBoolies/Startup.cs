@@ -14,6 +14,7 @@ using SaintBoolies.Db.Contexts;
 using System;
 using AutoMapper;
 using SaintBoolies.Mapping;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SaintBoolies
 {
@@ -33,6 +34,13 @@ namespace SaintBoolies
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/User/Login");
+                    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/");
+                });
 
             services.AddControllers();
 
@@ -85,6 +93,8 @@ namespace SaintBoolies
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
