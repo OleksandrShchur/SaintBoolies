@@ -1,13 +1,11 @@
-* {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   background-color: #e4e4e4;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* StartPage Styles */
@@ -28,7 +26,7 @@ body {
   margin: 0;
 }
 
-.ContentStartPage {
+.Content {
   width: 768px;
   margin: 0 auto;
   text-align: center;
@@ -49,8 +47,8 @@ div.ContentStartPage > h1 {
   margin-bottom: 16px;
 }
 
-div.ButtonBlock > button {
-  margin: 0 10px;
+.RegisterButton {
+  padding: 10px;
 }
 
 .FooterStartPage {
@@ -64,3 +62,82 @@ div.FooterStartPage > p {
   padding: 10px 0;
   margin: 0;
 }
+
+/* LoginRegistrationForm Styles */
+
+.LoginBox {
+  padding-top: 50px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.LoginCard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.LoginHeaderText {
+  font-size: 36px;
+  padding-top: 16px;
+  font-weight: 700;
+}
+
+.LoginText {
+  text-align: center;
+}
+
+.LoginButton {
+  text-align: center;
+  padding-bottom: 6px;
+}
+
+.LoginButton > Button {
+  background-color: #128EE5;
+}
+
+/* RedirectBackToHome Styles */
+
+.BackButton {
+  position: absolute;
+  width: 120px;
+  font-size: 22px;
+  padding: 10px 20px 14px 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.BackButton:hover {
+  background-color: #b8b5b5;
+}
+
+/* Footer Styles */
+
+.FooterStartPage {
+  height: 100%;
+  padding: 6px 0px;
+}
+
+.Description {
+  margin: 0 auto;
+  display: table;
+  font-size: 14px;
+}
+
+.Description > div {
+  display: table-cell;
+  padding: 2px 6px;
+}
+
+/* AboutUs Styles */
+
+.Padding10 {
+  padding: 10px 0px;  
+}
+
+.AboutUsText {
+  padding-bottom: 12px;
+}
+
+/* AboutUs Styles */
+
