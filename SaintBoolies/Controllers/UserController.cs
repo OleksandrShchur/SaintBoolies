@@ -25,6 +25,7 @@ namespace SaintBoolies.Controllers
 
         [HttpPost]
         [Route("AddUser")]
+        [AllowAnonymous]
         public async Task<IActionResult> AddUser(UserRegistrationViewModel user)
         {
             var result = await _userService.Create(user);
