@@ -46,6 +46,8 @@ namespace SaintBoolies
 
             #region Configure our services...
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IGroupService, GroupService>();
+            services.AddScoped<INoteService, NoteService>();
             #endregion
 
             services.AddSwaggerGen(c =>
