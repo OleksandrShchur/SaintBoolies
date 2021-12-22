@@ -2,17 +2,17 @@ div.ContentStartPage > h1 {
     margin-bottom: 20px;
   }
   
-  .ImageStartPage {
+.ImageStartPage {
     background-image: url(../img/limit20blocks.jpg);
     width: 100%;
     height: 400px;
     margin: 14px 0px;
-  }
+}
   
-  .ButtonBlock {
+.ButtonBlock {
     margin-bottom: 16px;
-  }
+}
   
-  .RegisterButton {
+.RegisterButton {
     padding: 10px;
-  }
+}

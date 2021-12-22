@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/RedirectButton.css'
+import '../../styles/RedirectButton.css'
 
 const RedirectBackToHome = () => {
     return (

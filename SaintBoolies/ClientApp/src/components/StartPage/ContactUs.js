@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 
-import '../styles/AboutContact.css'
+import '../../styles/AboutContact.css'
 
 export class ContactUs extends Component {
 

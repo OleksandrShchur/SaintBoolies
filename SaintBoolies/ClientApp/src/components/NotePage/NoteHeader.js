@@ -1,7 +1,7 @@
 import React from 'react'
-import LogOutDialog from './LogOutDialog';
+import ModalLogOut from '../Modals/ModalLogOut';
 
-import '../styles/NoteHeader.css'
+import '../../styles/NoteHeader.css'
 
 const NoteHeader = (props) => {
     return (
@@ -9,7 +9,7 @@ const NoteHeader = (props) => {
             <span className='NoteTitle'>
                 {props.title}
             </span>
-            <LogOutDialog/>
+            <ModalLogOut/>
         </div>
     )
 }

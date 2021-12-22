@@ -1,7 +1,0 @@
-.trngl{
-  transform: rotate(90deg); 
-}
-  
-.trngl:hover{
-  transform: rotate(180deg); 
-}

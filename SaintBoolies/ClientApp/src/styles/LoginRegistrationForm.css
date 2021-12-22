@@ -2,29 +2,29 @@
     padding-top: 50px;
     width: 300px;
     margin: 0 auto;
-  }
+}
   
-  .LoginCard {
-    display: flex;
+.LoginCard {
+  display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-  }
+}
   
-  .LoginHeaderText {
+.LoginHeaderText {
     font-size: 36px;
     padding-top: 16px;
     font-weight: 700;
-  }
+}
   
-  .LoginText {
+.LoginText {
     text-align: center;
-  }
+}
   
-  .LoginButton {
+.LoginButton {
     text-align: center;
     padding-bottom: 6px;
-  }
+}
   
-  .LoginButton > Button {
+.LoginButton > Button {
     background-color: #128EE5;
-  }
+}

@@ -4,10 +4,11 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
+import DeleteIcon from '@material-ui/icons/Delete';
 
-import '../styles/LogOutDialog.css'
+import '../../styles/ModalStyles.css'
 
-export default function LogOutDialog() {
+export default function ModalDeleteItem() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -21,12 +22,15 @@ export default function LogOutDialog() {
   const ButtonNo = {
     border: 'solid 1px',
     borderColor: '#128EE5', 
-    color: '#128EE5'
+    color: '#128EE5',
+    padding: '5px 40px'
   }
 
   const ButtonYes = {
+    border: 'solid 1px',
     backgroundColor: '#128EE5', 
-    color: '#fff'
+    color: '#fff',
+    padding: '5px 40px'
   }
 
   const Text = {
@@ -34,8 +38,8 @@ export default function LogOutDialog() {
   }
 
   return (
-    <div className='LogOut'>
-      <Button onClick={handleClickOpen}>Log Out</Button>
+    <div className='ModalWindow'>
+      <DeleteIcon onClick={handleClickOpen} />
       <Dialog
         open={open}
         onClose={handleClose}
@@ -43,7 +47,7 @@ export default function LogOutDialog() {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <DialogContentText id="alert-dialog-description" style={Text}>Do you really want to exit?</DialogContentText>
+          <DialogContentText id="alert-dialog-description" style={Text}>Delete this item?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} style={ButtonNo}>No</Button>

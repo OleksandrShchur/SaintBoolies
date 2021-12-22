@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { SignUp } from './components/SignUp';
-import { SignIn } from './components/SignIn';
-import { AboutUs } from './components/AboutUs';
-import { ContactUs } from './components/ContactUs';
-import { NotesMainPage }from './components/NotesMainPage';
+import { StartPage } from './components/StartPage';
+import { SignUp } from './components/StartPage/SignUp';
+import { SignIn } from './components/StartPage/SignIn';
+import { AboutUs } from './components/StartPage/AboutUs';
+import { ContactUs } from './components/StartPage/ContactUs';
+import { NotesPage }from './components/NotesPage';
 
 import './styles/custom.css'
 
@@ -16,16 +15,14 @@ export default class App extends Component {
 
     return (
     <BrowserRouter>
-      <Layout>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={StartPage} />
             <Route exact path='/SignUp' component={SignUp} />
             <Route exact path='/SignIn' component={SignIn} />
             <Route exact path='/AboutUs' component={AboutUs} />
             <Route exact path='/ContactUs' component={ContactUs} />
-            <Route exact path='/NotesMainPage' component={NotesMainPage} />
+            <Route exact path='/NotesPage' component={NotesPage} />
           </Switch>
-      </Layout>
     </BrowserRouter>
     );
   }

@@ -1,37 +1,15 @@
-.sidebar{
+.Sidebar{
     float:left;
-    min-height:730px;
+    height: 100vh;
+    width: 280px;
     border-right: 1px solid #128EE5;
 }
 
-.menu{
-    height:71px;
+.SidebaHeader{
     border-bottom: 1px solid #128EE5;
 }
 
-.droplist{
-    z-index: 3;
-    float:left;
-    margin:20px;
-}
-
-.newgrp{
-    border-bottom:0px;
-}
-  
-.newgrp a{
-    opacity: 0;
-}
-  
-.newgrp a:hover{
-    opacity: 1;
-}
-  
-a:link{
-    text-decoration: none;
-    color:black;
-}
-  
-a:hover{
-    color:#128EE5;
+.AddNewGroup {
+    margin-top: 6px;
+    margin-left: 16px;
 }

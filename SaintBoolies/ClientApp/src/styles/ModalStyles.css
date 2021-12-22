@@ -1,8 +1,8 @@
-.LogOut{
+.ModalWindow{
   display: inline;
 }
   
-.LogOut > Button{
+.ModalWindow > Button{
   float: right;
   font-size: 18px;
   color: #128EE5;
@@ -13,7 +13,7 @@
   margin: 11px 12px;
 }
   
-.LogOut > Button:hover{
+.ModalWindow > Button:hover{
   color: #fff;
   background-color: #128EE5;
 }
