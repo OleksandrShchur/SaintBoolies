@@ -1,0 +1,11 @@
+.HeaderStartPage {
+    font-size: 28px;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 1px solid #128EE5;
+  }
+  
+  .HeaderText {
+    padding: 12px 0px;
+    margin: 0;
+  }

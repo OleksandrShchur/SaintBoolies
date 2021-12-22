@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../styles/FormExit.css'
+
 const FormExit = ({show}) => {
     show=true;
 

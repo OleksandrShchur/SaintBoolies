@@ -2,6 +2,8 @@ import React from "react";
 import NoteGroup from "./NoteGroup";
 import NoteItself from "./NoteItself"
 
+import '../styles/Sidebar.css'
+
 const Sidebar = () => {
   return (
     <div class='sidebar'>

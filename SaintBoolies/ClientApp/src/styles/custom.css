@@ -1,0 +1,86 @@
+body {
+  background-color: #e4e4e4;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Container {
+  width: 100%;
+}
+
+.Content {
+  width: 768px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+input{
+  margin-top:15px;
+  border-radius: 5px;
+  width:215px;
+  padding:1px 1px 1px 10px;
+  height:40px;
+  border: 1px solid #128EE5;
+  font-size: 24px;
+}
+
+
+form{
+  width: 300px;
+  margin-right: 15px;
+}
+
+.btn{
+  padding: 0;
+  max-height: 30px;
+}
+
+
+.btnfloat{
+  float:right;
+  opacity: 0.2;
+}
+
+.btnfloat:hover{
+  opacity: 1;
+}
+
+.NoteText{
+  border-top: 1px solid #128EE5;
+  height: 660px;
+  padding:15px;
+}
+
+div.scroll{
+  overflow-x:hidden; 
+  overflow-y:auto;
+}
+
+.notes{
+  font-size: 24px;
+  border-bottom: 1px solid #128EE5;
+  padding: 10px 0px 10px 0px; 
+  margin:0px 15px;
+}
+
+.note{
+  margin-left: 30px;
+}
+
+.note{
+margin-left: 30px;
+}
+
+.sighin{
+  font-size: 24px;
+  border-bottom: 1px solid #128EE5;
+
+}
+
+.editnote{
+min-width: 300px;
+}

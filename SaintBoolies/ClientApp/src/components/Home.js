@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 import Header from './Header';
 import Footer from './Footer';
 
+import '../styles/StartPage.css'
+
 export class Home extends Component {
   static displayName = Home.name;
 

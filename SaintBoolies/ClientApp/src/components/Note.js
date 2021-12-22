@@ -2,6 +2,8 @@ import React from 'react'
 import NoteHeader from './NoteHeader'
 import NoteText from './NoteText'
 
+import '../styles/Note.css'
+
 const Note = () => {
     return (
             <div class='noteClass'>

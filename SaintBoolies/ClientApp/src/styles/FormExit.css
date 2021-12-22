@@ -1,0 +1,19 @@
+.frmxt{
+    font-size: 24px;
+    max-width: 300px;
+    padding: 10px;
+    background: #e4e4e4;
+    z-index:2;
+    left: 618px;
+    top:10px;
+    position: absolute;
+    border: 1px solid #128EE5;
+    border-radius: 10px;
+    box-shadow: 5px 10px 8px #888888;
+  }
+
+  .extbtn{
+    max-width: 100px;
+    padding: 1px;
+    margin:0px 20px;
+  }

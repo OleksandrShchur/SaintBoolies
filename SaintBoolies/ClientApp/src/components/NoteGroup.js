@@ -4,6 +4,8 @@ import edt from '../images/edit.png'
 import nev from '../images/new.png'
 import AlertEditName from './AlertEditName'
 
+import '../styles/NoteGroup.css'
+
 function NoteGroup(props) {
     return (
         <div class='notes group'>
