@@ -1,16 +1,15 @@
 import React from 'react'
-import AlertDialog from './AlertDialog';
+import LogOutDialog from './LogOutDialog';
 
 import '../styles/NoteHeader.css'
 
 const NoteHeader = (props) => {
     return (
-        <div class='header'>
-            
-            <span class='title'>
+        <div className='NoteHeader'>
+            <span className='NoteTitle'>
                 {props.title}
             </span>
-                <AlertDialog/>
+            <LogOutDialog/>
         </div>
     )
 }

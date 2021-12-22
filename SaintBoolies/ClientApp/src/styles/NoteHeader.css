@@ -1,11 +1,10 @@
-.header{
+.NoteHeader{
   position: relative;
-  left: 80px;
   font-size: 24px;
-  padding: 17px 15px;
   margin-left: 0;
 }
 
-.title{
+.NoteTitle{
   display: inline-block;
+  padding: 14px 0px 14px 20px;
 }
