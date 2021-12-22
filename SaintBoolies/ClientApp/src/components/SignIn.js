@@ -8,7 +8,6 @@ import RedirectBackToHome from './RedirectBackToHome';
 import '../styles/LoginRegistrationForm.css'
 
 export class SignIn extends Component {
-  static displayName = SignIn.name;
   
   render () {
     return (

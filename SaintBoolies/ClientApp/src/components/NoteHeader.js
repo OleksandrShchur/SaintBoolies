@@ -1,17 +1,7 @@
 import React from 'react'
-import FormExit from './FormExit'
-import {useState} from 'react'
 import AlertDialog from './AlertDialog';
 
 import '../styles/NoteHeader.css'
-
-var showform = false;
-
-function shw() {
-    return(
-        <FormExit/>
-    )
-    }
 
 const NoteHeader = (props) => {
     return (

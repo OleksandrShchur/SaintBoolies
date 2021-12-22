@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import '../styles/AboutContact.css'
 
 export class ContactUs extends Component {
-  static displayName = ContactUs.name;
 
   render () {
     return (

@@ -26,7 +26,7 @@ const Sidebar = () => {
       <NoteGroup text='Movies' />
 
       <div class='notes note newgrp'>
-        <a>new group</a>
+        <p>new group</p>
       </div>
 
     </div>

@@ -5,7 +5,6 @@ import Footer from './Footer';
 import '../styles/AboutContact.css'
 
 export class AboutUs extends Component {
-  static displayName = AboutUs.name;
 
   render () {
     return (
