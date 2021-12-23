@@ -4,34 +4,28 @@ import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import RedirectBackToHome from './RedirectBackToHome';
+import { useHistory } from "react-router-dom";
+import SignInEnum from '../enums/SignInEnum';
 import api from '../services/apiService';
-import SignUpEnum from '../enums/SignUpEnum';
-import { useHistory } from 'react-router-dom';
+import '../../styles/LoginRegistrationForm.css'
 
-export default function SignUp() {
+export default function SignIn() {
   const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (event.target[SignUpEnum.Password].value !== event.target[SignUpEnum.RepeatPassword].value) {
-      alert("Password does not match!");
+    const data = {
+      'email': event.target[SignInEnum.Email].value,
+      'password': event.target[SignInEnum.Password].value
+    };
+    const responce = await api.post(`User/Login`, data);
+
+    if (responce.status === 200) {
+      history.push("/NotesMainPage");
     }
     else {
-      const data = {
-        'login': event.target[SignUpEnum.Login].value,
-        'email': event.target[SignUpEnum.Email].value,
-        'password': event.target[SignUpEnum.Password].value
-      };
-
-      const responce = await api.post(`User/AddUser`, data);
-
-      if (responce.status === 200) {
-        history.push("/NotesMainPage");
-      }
-      else {
-        alert("Sign up failed!");
-      }
+      alert("Sign in failed!");
     }
   };
 
@@ -42,15 +36,8 @@ export default function SignUp() {
         <Card variant='outlined'>
           <form className='LoginCard' onSubmit={handleSubmit}>
             <div className='LoginHeaderText LoginText'>
-              <p>Sign Up</p>
+              <p>Sign In</p>
             </div>
-            <TextField
-              label='Nickname'
-              variant='filled'
-              required
-              style={{ margin: '8px' }}
-              name='login'
-            />
             <TextField
               label='Email'
               variant='filled'
@@ -67,26 +54,17 @@ export default function SignUp() {
               style={{ margin: '8px' }}
               name='password'
             />
-            <TextField
-              label='Repeat password'
-              variant='filled'
-              type='password'
-              required
-              style={{ margin: '8px' }}
-              name='repeatPassword'
-            />
             <div className='LoginButton'>
               <Button type='submit' variant='contained' color='primary'>
-                Sign Up
+                Sign In
               </Button>
             </div>
             <div className='LoginText'>
-              <p>Are you registered? <Link path to="/SignIn">Sign In</Link></p>
+              <p>Are you not registered? <Link path to="/SignUp">Sign Up</Link></p>
             </div>
           </form>
         </Card>
       </div>
     </div>
-  );
+  )
 }
-

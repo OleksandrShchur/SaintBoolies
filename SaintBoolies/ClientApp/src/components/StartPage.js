@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './StartPage/Header';
+import Footer from './StartPage/Footer';
 
-export class Home extends Component {
-  static displayName = Home.name;
+import '../styles/StartPage.css'
+
+export class StartPage extends Component {
 
   render () {
     return (

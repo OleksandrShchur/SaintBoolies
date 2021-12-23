@@ -1,0 +1,15 @@
+.Sidebar{
+    float:left;
+    height: 100vh;
+    width: 280px;
+    border-right: 1px solid #128EE5;
+}
+
+.SidebaHeader{
+    border-bottom: 1px solid #128EE5;
+}
+
+.AddNewGroup {
+    margin-top: 6px;
+    margin-left: 16px;
+}
