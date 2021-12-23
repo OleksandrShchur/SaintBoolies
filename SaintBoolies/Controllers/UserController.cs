@@ -29,6 +29,7 @@ namespace SaintBoolies.Controllers
         public async Task<IActionResult> AddUser(UserRegistrationViewModel user)
         {
             var result = await _userService.Create(user);
+            await AuthenticateUser(result.Email);
 
             return Ok(result);
         }

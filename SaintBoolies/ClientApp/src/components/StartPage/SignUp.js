@@ -4,12 +4,12 @@ import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import RedirectBackToHome from './RedirectBackToHome';
-import api from '../services/apiService';
-import SignUpEnum from '../enums/SignUpEnum';
+import api from '../../services/apiService';
+import SignUpEnum from '../../enums/SignUpEnum';
 import { useHistory } from 'react-router-dom';
 import '../../styles/LoginRegistrationForm.css'
 
-export default function SignUp() {
+export function SignUp() {
   const history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -28,7 +28,7 @@ export default function SignUp() {
       const responce = await api.post(`User/AddUser`, data);
 
       if (responce.status === 200) {
-        history.push("/NotesMainPage");
+        history.push("/NotesPage");
       }
       else {
         alert("Sign up failed!");

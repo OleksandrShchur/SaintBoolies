@@ -5,11 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import RedirectBackToHome from './RedirectBackToHome';
 import { useHistory } from "react-router-dom";
-import SignInEnum from '../enums/SignInEnum';
-import api from '../services/apiService';
+import SignInEnum from '../../enums/SignInEnum';
+import api from '../../services/apiService';
 import '../../styles/LoginRegistrationForm.css'
 
-export default function SignIn() {
+export function SignIn() {
   const history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -22,7 +22,7 @@ export default function SignIn() {
     const responce = await api.post(`User/Login`, data);
 
     if (responce.status === 200) {
-      history.push("/NotesMainPage");
+      history.push("/NotesPage");
     }
     else {
       alert("Sign in failed!");

@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import api from '../services/apiService';
+import api from '../../services/apiService';
 import { useHistory } from 'react-router-dom';
 
 import '../../styles/ModalStyles.css'
@@ -36,13 +36,13 @@ export default function LogOutDialog() {
 
   const ButtonNo = {
     border: 'solid 1px',
-    borderColor: '#128EE5', 
+    borderColor: '#128EE5',
     color: '#128EE5',
     padding: '5px 40px'
   }
 
   const ButtonYes = {
-    backgroundColor: '#128EE5', 
+    backgroundColor: '#128EE5',
     color: '#fff',
     padding: '5px 40px'
   }
