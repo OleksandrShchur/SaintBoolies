@@ -3,8 +3,9 @@ import Header from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 
+import '../../styles/AboutContact.css'
+
 export class ContactUs extends Component {
-  static displayName = ContactUs.name;
 
   render () {
     return (
@@ -14,11 +15,10 @@ export class ContactUs extends Component {
                 <h1 className='Padding10'>Contact Us</h1>
                 <h4>You can reach to us</h4>
                 <div className='Padding10'>
-                    <h2>Created by</h2>
-                        <div><b>Oleksandr Shchur</b> | <Link>shchur.oleksandr@chnu.edu.ua</Link></div>
-                        <div><b>Inna Shapovalova</b> | <Link>shapovalova.inna@chnu.edu.ua</Link></div>
-                        <div><b>Den Burak</b> | <Link>burak.denys@chnu.edu.ua</Link></div>
-                        <div><b>Andrii Madei</b> | <Link>madey.andriy@chnu.edu.ua</Link></div>
+                    <div><b>Oleksandr Shchur</b> | <Link>shchur.oleksandr@chnu.edu.ua</Link></div>
+                    <div><b>Inna Shapovalova</b> | <Link>shapovalova.inna@chnu.edu.ua</Link></div>
+                    <div><b>Den Burak</b> | <Link>burak.denys@chnu.edu.ua</Link></div>
+                    <div><b>Andrii Madei</b> | <Link>madey.andriy@chnu.edu.ua</Link></div>
                 </div>
             </div>
         <Footer />

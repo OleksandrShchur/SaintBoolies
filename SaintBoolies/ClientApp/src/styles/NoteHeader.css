@@ -1,0 +1,9 @@
+.NoteHeader{
+  font-size: 24px;
+  margin-left: 0;
+}
+
+.NoteTitle{
+  display: inline-block;
+  padding: 14px 0px 14px 20px;
+}

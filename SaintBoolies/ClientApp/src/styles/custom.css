@@ -1,0 +1,64 @@
+body {
+  background-color: #e4e4e4;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Container {
+  width: 100%;
+}
+
+.Content {
+  width: 768px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.NoteButton{
+  width: 247px;
+  font-size: 16px;
+  border-bottom: 1px solid #128EE5;
+}
+
+.NoteButton > Button {
+  width: 180px;
+  font-size: 14px;
+  text-transform: none;
+}
+.NoteName {
+  text-align: left;
+}
+
+.NoteNameButton {
+  float: right;
+  padding-top: 6px;
+  padding-right: 6px;
+}
+
+.NoteText{
+  border-top: 1px solid #128EE5;
+  height: 550px;
+  padding:15px;
+}
+
+.NoteGroupName {
+  padding-top: 2px;
+  width: 200px;
+}
+
+.NoteGroupButton {
+  padding: 0;
+}
+
+.NotePage {
+  height: 100%;
+}
+
+div.scroll{
+  overflow-x:hidden; 
+  overflow-y:auto;
+}

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Sidebar from './Sidebar';
-import Note from './Note';
+import Sidebar from './NotePage/Sidebar';
+import Note from './NotePage/Note';
 
 
-export class NotesMainPage extends Component {
+export class NotesPage extends Component {
 
     render() {
         return (

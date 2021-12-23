@@ -5,8 +5,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import RedirectBackToHome from './RedirectBackToHome';
 
-export class SignUp extends Component {
-  static displayName = SignUp.name;
+import '../../styles/LoginRegistrationForm.css'
+
+export class SignIn extends Component {
   
   render () {
     return (
@@ -16,14 +17,8 @@ export class SignUp extends Component {
         <Card variant='outlined'>
           <form className='LoginCard'>
             <div className='LoginHeaderText LoginText'>
-              <p>Sign Up</p>
+              <p>Sign In</p>
             </div>
-            <TextField
-              label='Nickname'
-              variant='filled'
-              required
-              style={{margin: '8px'}}
-            />
             <TextField
               label='Email'
               variant='filled'
@@ -38,20 +33,13 @@ export class SignUp extends Component {
               required
               style={{margin: '8px'}}
             />
-            <TextField
-              label='Repeat password'
-              variant='filled'
-              type='password'
-              required
-              style={{margin: '8px'}}
-            />
             <div className='LoginButton'>
-              <Button type='submit' variant='contained' color='primary'>
-                Sign Up
+              <Button type='submit' variant='contained' color='primary'> 
+                Sign In
               </Button>
             </div>
             <div className='LoginText'>
-              <p>Are you registered? <Link path to="/SignIn">Sign In</Link></p>
+              <p>Are you not registered? <Link path to="/SignUp">Sign Up</Link></p>
             </div>
           </form>
         </Card>
@@ -60,4 +48,3 @@ export class SignUp extends Component {
     );
   }
 }
-
