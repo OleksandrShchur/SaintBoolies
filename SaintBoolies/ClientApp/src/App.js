@@ -15,14 +15,14 @@ export default class App extends Component {
 
     return (
     <BrowserRouter>
-          <Switch>
-            <Route exact path='/' component={StartPage} />
-            <Route exact path='/SignUp' component={SignUp} />
-            <Route exact path='/SignIn' component={SignIn} />
-            <Route exact path='/AboutUs' component={AboutUs} />
-            <Route exact path='/ContactUs' component={ContactUs} />
-            <Route exact path='/NotesPage' component={NotesPage} />
-          </Switch>
+      <Switch>
+        <Route exact path='/' component={StartPage} />
+        <Route exact path='/SignUp' component={SignUp} />
+        <Route exact path='/SignIn' component={SignIn} />
+        <Route exact path='/AboutUs' component={AboutUs} />
+        <Route exact path='/ContactUs' component={ContactUs} />
+        <Route exact path='/NotesPage' component={NotesPage} />
+      </Switch>
     </BrowserRouter>
     );
   }
