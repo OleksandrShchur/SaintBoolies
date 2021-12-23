@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SaintBoolies.Core.IServices;
-using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
+using SaintBoolies.Shared.ViewModels;
 
 namespace SaintBoolies.Controllers
 {
@@ -23,19 +21,19 @@ namespace SaintBoolies.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Group>>> GetGroups()
+        public ActionResult<IEnumerable<Group>> GetGroups()
         {
-            return Ok(await _groupService.GetAllGroups());
+            return Ok(_groupService.GetAllGroups());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Group>> GetGroup(int id)
+        public async Task<IActionResult> GetGroup(int id)
         {
-            var group = _groupService.GetOneGroup(id);
-            if (group == null)
-                return NotFound();
+            var group = await _groupService.GetOneGroup(id);
 
-            return Ok(group);
+            return group == null
+                ? NotFound()
+                : Ok(group);
         }
 
         [HttpPut("{id}")]
@@ -57,11 +55,11 @@ namespace SaintBoolies.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Group>> PostGroup(Group @group)
+        public async Task<Group> PostGroup(GroupCreateViewModel group)
         {
-            await _groupService.PostOneGroup(group);
+            var result = await _groupService.PostOneGroup(group);
 
-            return CreatedAtAction("GetGroup", new { id = @group.Id }, @group);
+            return result;
         }
 
         [HttpDelete("{id}")]

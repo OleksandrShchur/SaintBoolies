@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SaintBoolies.Core.IServices;
 using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
-using System;
+using SaintBoolies.Shared.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SaintBoolies.Core.Services
@@ -34,19 +32,17 @@ namespace SaintBoolies.Core.Services
 
 		}
 
-		public async Task<IEnumerable<Group>> GetAllGroups()
+		public IEnumerable<Group> GetAllGroups()
 		{
-			return await _context.Groups.ToListAsync();
+			var groups = _context.Groups
+				.ToList();
+
+			return groups; 
 		}
 
 		public async Task<Group> GetOneGroup(int id)
 		{
 			var group = await _context.Groups.FindAsync(id);
-
-			if (group == null)
-			{
-				return null;
-			}
 
 			return group;
 		}
@@ -56,10 +52,14 @@ namespace SaintBoolies.Core.Services
 			return _context.Groups.Any(e => e.Id == id);
 		}
 
-		public async Task PostOneGroup(Group group)
+		public async Task<Group> PostOneGroup(GroupCreateViewModel groupViewModel)
 		{
+			var group = _mapper.Map<GroupCreateViewModel, Group>(groupViewModel);
+
 			_context.Groups.Add(group);
 			await _context.SaveChangesAsync();
+
+			return group;
 		}
 
 		public async Task PutOneGroup(int id, Group group)

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SaintBoolies.Core.Infrustructure;
 using SaintBoolies.Core.IServices;
 using SaintBoolies.Db.Contexts;
@@ -43,7 +44,14 @@ namespace SaintBoolies.Core.Services
             return result;
         }
 
-        public User GetByEmail(string email) => _context.Users.FirstOrDefault(u => u.Email == email);
+        public User GetByEmail(string email)
+        {
+            var user = _context.Users
+                .Include(u => u.Groups)
+                .FirstOrDefault(u => u.Email == email);
+
+            return user;
+        } 
 
         public List<UserListViewModel> GetAllUsers()
         {
