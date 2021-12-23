@@ -1,37 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import RedirectBackToHome from './RedirectBackToHome';
 import api from '../services/apiService';
+import SignUpEnum from '../enums/SignUpEnum';
+import { useHistory } from 'react-router-dom';
 
 export default function SignUp() {
-  const [login, setLogin] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLogin(event.target.login.value);
-    setEmail(event.target.email.value);
-    setPassword(event.target.password.value);
-    console.log(event.target);
 
-    if (password === event.target.repeatPassword) {
+    if (event.target[SignUpEnum.Password].value !== event.target[SignUpEnum.RepeatPassword].value) {
       alert("Password does not match!");
     }
     else {
       const data = {
-        'login': login,
-        'email': email,
-        'password': password
+        'login': event.target[SignUpEnum.Login].value,
+        'email': event.target[SignUpEnum.Email].value,
+        'password': event.target[SignUpEnum.Password].value
       };
 
       const responce = await api.post(`User/AddUser`, data);
-      console.log(responce.data);
+
+      if (responce.status === 200) {
+        history.push("/NotesMainPage");
+      }
+      else {
+        alert("Sign up failed!");
+      }
     }
-  }
+  };
 
   return (
     <div>
