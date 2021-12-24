@@ -6,9 +6,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import '../../styles/ModalStyles.css'
+import '../../styles/ModalStyles.css';
 
-export default function ModalDeleteItem() {
+export default function ModalDeleteItem(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -24,18 +24,18 @@ export default function ModalDeleteItem() {
     borderColor: '#128EE5', 
     color: '#128EE5',
     padding: '5px 40px'
-  }
+  };
 
   const ButtonYes = {
     border: 'solid 1px',
     backgroundColor: '#128EE5', 
     color: '#fff',
     padding: '5px 40px'
-  }
+  };
 
   const Text = {
     color: '#000'
-  }
+  };
 
   return (
     <div className='ModalWindow'>

@@ -21,9 +21,12 @@ namespace SaintBoolies.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Group>> GetGroups()
+        [Route("GetUserGroups")]
+        public IEnumerable<Group> GetGroups(int userId)
         {
-            return Ok(_groupService.GetAllGroups());
+            var result = _groupService.GetAllGroups(userId);
+
+            return result;
         }
 
         [HttpGet("{id}")]
@@ -37,9 +40,9 @@ namespace SaintBoolies.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGroup(int id, Group @group)
+        public async Task<IActionResult> PutGroup(int id, Group group)
         {
-            if (id != @group.Id)
+            if (id != group.Id)
             {
                 return BadRequest();
             }
@@ -68,12 +71,6 @@ namespace SaintBoolies.Controllers
             await _groupService.DeleteOneGroup(id);
 
             return NoContent();
-        }
-
-        [NonAction]
-        private bool GroupExists(int id)
-        {
-            return _groupService.IfGroupExists(id);
         }
     }
 }

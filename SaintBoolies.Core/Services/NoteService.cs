@@ -4,23 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using SaintBoolies.Core.IServices;
 using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SaintBoolies.Core.Services
 {
     public class NoteService: BaseService<Note>, INoteService
     {
-        private readonly IMapper _mapper;
-        public NoteService(
-            AppDbContext context,
-            IMapper mapper)
+        public NoteService(AppDbContext context)
             : base(context)
         {
-            _mapper = mapper;
         }
 
 		public async Task DeleteOneNote(int id)
@@ -55,10 +49,12 @@ namespace SaintBoolies.Core.Services
 			return _context.Notes.Any(e => e.Id == id);
 		}
 
-		public async Task PostOneNote(Note note)
+		public async Task<Note> PostOneNote(Note note)
 		{
 			_context.Notes.Add(note);
 			await _context.SaveChangesAsync();
+
+			return note;
 		}
 
 		public async Task PutOneNote(int id, Note note)
@@ -74,5 +70,14 @@ namespace SaintBoolies.Core.Services
 				throw;
 			}
 		}
+
+		public IList<Note> GetAllNotesInGroup(int groupId)
+        {
+			var notes = _context.Notes
+				.Where(n => n.GroupId == groupId)
+				.ToList();
+
+			return notes;
+        }
 	}
 }

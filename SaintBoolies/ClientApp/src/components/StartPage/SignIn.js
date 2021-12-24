@@ -20,12 +20,13 @@ export function SignIn() {
       'password': event.target[SignInEnum.Password].value
     };
     const responce = await api.post(`User/Login`, data);
+    console.log(responce);
 
     if (responce.status === 200) {
-      history.push("/NotesPage");
+      history.push(`/NotesPage/${responce.data.id}`);
     }
     else {
-      alert("Sign in failed!");
+      alert('Sign in failed!');
     }
   };
 

@@ -15,15 +15,19 @@ namespace SaintBoolies.Core.Services
     public class UserService : BaseService<User>, IUserService
     {
         private readonly IMapper _mapper;
+        private readonly IGroupService _groupService;
+        private readonly static string defaultGroup = "My notes";
         public UserService(
             AppDbContext context,
-            IMapper mapper)
+            IMapper mapper,
+            IGroupService groupService)
             : base(context)
         {
             _mapper = mapper;
+            _groupService = groupService;
         }
 
-        public async Task<User> Create(UserRegistrationViewModel user)
+        public async Task<UserProfileViewModel> Create(UserRegistrationViewModel user)
         {
             if (UserExistence(user.Email))
             {
@@ -41,7 +45,16 @@ namespace SaintBoolies.Core.Services
                 throw new Exception("Adding failed");
             }
 
-            return result;
+            // create default group for new user
+            var groupViewModel = new GroupCreateViewModel()
+            {
+                UserId = result.Id,
+                Title = defaultGroup
+            };
+            await _groupService.PostOneGroup(groupViewModel);
+            var mappedUser = _mapper.Map<User, UserProfileViewModel>(result);
+
+            return mappedUser;
         }
 
         public User GetByEmail(string email)

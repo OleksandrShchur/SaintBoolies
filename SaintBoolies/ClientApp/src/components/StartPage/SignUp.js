@@ -28,7 +28,7 @@ export function SignUp() {
       const responce = await api.post(`User/AddUser`, data);
 
       if (responce.status === 200) {
-        history.push("/NotesPage");
+        history.push(`/NotesPage/${responce.data.id}`);
       }
       else {
         alert("Sign up failed!");

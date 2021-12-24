@@ -7,7 +7,7 @@ namespace SaintBoolies.Core.IServices
 {
     public interface IUserService
     {
-        Task<User> Create(UserRegistrationViewModel user);
+        Task<UserProfileViewModel> Create(UserRegistrationViewModel user);
 
         User GetByEmail(string email);
 

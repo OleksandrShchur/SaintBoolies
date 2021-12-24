@@ -13,28 +13,39 @@ namespace SaintBoolies.Core.Services
     public class GroupService: BaseService<Group>, IGroupService
     {
         private readonly IMapper _mapper;
+		private readonly INoteService _noteService;
         public GroupService(
             AppDbContext context,
-            IMapper mapper)
+            IMapper mapper,
+			INoteService noteService)
             : base(context)
         {
             _mapper = mapper;
+			_noteService = noteService;
         }
 
 		public async Task DeleteOneGroup(int id)
 		{
 			var group = await _context.Groups.FindAsync(id);
+
 			if (group != null)
 			{
+				var notesInGroup = _noteService.GetAllNotesInGroup(group.Id);
+
+				foreach (var note in notesInGroup)
+				{
+					await _noteService.DeleteOneNote(note.Id);
+				}
+
 				_context.Groups.Remove(group);
 				await _context.SaveChangesAsync();
 			}
-
 		}
 
-		public IEnumerable<Group> GetAllGroups()
+		public IEnumerable<Group> GetAllGroups(int userId)
 		{
 			var groups = _context.Groups
+				.Where(g => g.UserId == userId)
 				.ToList();
 
 			return groups; 

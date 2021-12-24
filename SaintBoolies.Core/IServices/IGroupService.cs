@@ -7,7 +7,7 @@ namespace SaintBoolies.Core.IServices
 {
     public interface IGroupService
     {
-        IEnumerable<Group> GetAllGroups();
+        IEnumerable<Group> GetAllGroups(int userId);
 
         Task<Group> GetOneGroup(int id);
 
