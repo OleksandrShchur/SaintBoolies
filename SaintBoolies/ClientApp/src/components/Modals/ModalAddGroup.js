@@ -15,6 +15,7 @@ export default function ModalAddGroup(props) {
 
   const handleClickOpen = () => {
     setOpen(true);
+    setTitle('');
   };
 
   const handleClose = () => {
@@ -74,7 +75,7 @@ export default function ModalAddGroup(props) {
             value={title}
             autoFocus
             onChange={handleChangeTitle}
-            style={{ width: 230 }}
+            style={{ width: 250 }}
           />
         </DialogContent>
         <DialogActions>

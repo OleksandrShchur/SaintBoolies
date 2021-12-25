@@ -68,11 +68,5 @@ namespace SaintBoolies.Controllers
 
             return Ok();
         }
-
-        [NonAction]
-        private bool NoteExists(int id)
-        {
-            return _noteService.IfNoteExists(id);
-        }
     }
 }

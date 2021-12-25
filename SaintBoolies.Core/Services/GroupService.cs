@@ -45,6 +45,7 @@ namespace SaintBoolies.Core.Services
 		public IEnumerable<Group> GetAllGroups(int userId)
 		{
 			var groups = _context.Groups
+				.Include(g => g.Notes)
 				.Where(g => g.UserId == userId)
 				.ToList();
 

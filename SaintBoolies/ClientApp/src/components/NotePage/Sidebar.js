@@ -9,12 +9,11 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 
 import ModalDeleteItem from '../Modals/ModalDeleteItem';
-import ModalEditName from '../Modals/ModalEditName';
+import ModalEditName from '../Modals/ModalEditGroupName';
 import ModalAddGroup from '../Modals/ModalAddGroup';
 import ModalAddNote from '../Modals/ModalAddNote';
-import api from '../../services/apiService';
 import { useParams } from 'react-router-dom';
-
+import api from '../../services/apiService';
 import '../../styles/Sidebar.css';
 
 const SidebarSearch = {
@@ -28,26 +27,24 @@ const AccordionStyle = {
   borderBottom: '1px solid #128EE5'
 };
 
-const Sidebar = () => {
-  const [data, setData] = React.useState({});
+const Sidebar = (props) => {
+  const { handleNote, handleNoteModified } = props;
   const { userId } = useParams();
+  const [data, setData] = React.useState({});
 
-  useEffect(() => {
-    async function fetchData() {
-      const responce = await api.get(`Group/GetUserGroups?userId=${userId}`);
+  const renderNoteList = (index) => {
+    let items = [];
 
-      if (responce.status >= 400) {
-        alert("Something went wrong");
-      }
-      else {
-        setData(responce.data);
-      }
+    for (let i = 0; i < data[index].notes?.length; i++) {
+      items.push(
+        <NoteItem noteId={data[index].notes[i].id} text={data[index].notes[i].title} handleNote={handleNote} onSave={onSave} content={data[index].notes[i].text} groupId={data[index].id} handleNoteModified={handleNoteModified} />
+      );
     }
 
-    fetchData();
-  }, []);
+    return items;
+  };
 
-  const onSave = async () => {
+  const fetchData = async () => {
     const responce = await api.get(`Group/GetUserGroups?userId=${userId}`);
 
     if (responce.status >= 400) {
@@ -58,17 +55,13 @@ const Sidebar = () => {
     }
   };
 
-  const renderNoteList = (index) => {
-    let items = []
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    for(let i = 0; i < data[index].notes?.length; i++) {
-      items.push(
-        <NoteItem text={data[index].notes[i].title} />
-      );
-    }
-
-    return items;
-  }
+  const onSave = () => {
+    fetchData();
+  };
 
   const renderSidebar = () => {
     let items = [];
@@ -79,8 +72,8 @@ const Sidebar = () => {
           <Accordion style={AccordionStyle}>
             <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
               <Typography className='NoteGroupName'>{data[i].name}</Typography>
-              <ModalEditName className='NoteGroupButton' />
-              <ModalDeleteItem className='NoteGroupButton' />
+              <ModalEditName className='NoteGroupButton' groupId={data[i].id} onSave={onSave} title={data[i].name} />
+              <ModalDeleteItem className='NoteGroupButton' id={data[i].id} title='Delete the group with all notes?' onSave={onSave} />
             </AccordionSummary>
             <AccordionDetails>
               <Typography>

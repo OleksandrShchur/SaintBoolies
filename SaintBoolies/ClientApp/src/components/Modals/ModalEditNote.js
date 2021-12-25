@@ -5,51 +5,52 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 import api from '../../services/apiService';
 
-export default function ModalAddNote(props) {
-    const { groupId, onSave } = props;
+export default function ModalEditNote(props) {
+    const { noteId, onSave, title, text, groupId, handleNoteModified } = props;
     const [open, setOpen] = React.useState(false);
-    const [title, setTitle] = React.useState('');
-    const [text, setText] = React.useState('');
+    const [newTitle, setNewTitle] = React.useState(title);
+    const [newText, setNewText] = React.useState(text);
 
     const handleClickOpen = () => {
         setOpen(true);
-        setTitle('');
-        setText('');
     };
 
     const handleClose = () => {
         setOpen(false);
+        setNewText('');
+        setNewTitle('');
     };
 
-    const handleAdd = async () => {
+    const handleEdit = async () => {
         const data = {
-            'groupId': groupId,
-            'title': title,
-            'text': text,
-            'dateCreated': new Date()
+            'id': noteId,
+            'title': newTitle,
+            'text': newText,
+            'groupId': groupId
         };
 
-        const responce = await api.post(`Note`, data);
+        const responce = await api.put(`Note/${noteId}`, data);
 
         if (responce.status >= 400) {
-            alert("Failed to add new note");
+            alert("Failed to update note");
         }
         else {
             onSave();
         }
 
         setOpen(false);
+        handleNoteModified(true);
     };
 
     const handleChangeTitle = (event) => {
-        setTitle(event.target.value);
+        setNewTitle(event.target.value);
     };
 
     const handleChangeText = (event) => {
-        setText(event.target.value);
+        setNewText(event.target.value);
     };
 
     const ButtonNo = {
@@ -72,16 +73,15 @@ export default function ModalAddNote(props) {
     return (
         <div>
             <div>
-                <Button style={{ width: '247px' }}>
-                    <div><AddIcon onClick={handleClickOpen} /></div>
-                </Button>
+                <EditIcon onClick={handleClickOpen} />
             </div>
+
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle style={Text}>Enter title and content of your note:</DialogTitle>
+                <DialogTitle style={Text}>Update title and content of your note:</DialogTitle>
                 <DialogContent>
                     <TextField
                         label='Title'
-                        value={title}
+                        value={newTitle}
                         autoFocus
                         onChange={handleChangeTitle}
                         style={{ width: 250 }}
@@ -90,14 +90,14 @@ export default function ModalAddNote(props) {
                         multiline
                         rows={10}
                         label='Content'
-                        value={text}
+                        value={newText}
                         onChange={handleChangeText}
                         style={{ width: 550 }}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} style={ButtonNo}>Cancel</Button>
-                    <Button onClick={handleAdd} style={ButtonYes}>Save</Button>
+                    <Button onClick={handleEdit} style={ButtonYes}>Save</Button>
                 </DialogActions>
             </Dialog>
         </div>

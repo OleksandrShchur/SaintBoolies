@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Sidebar from './NotePage/Sidebar';
 import Note from './NotePage/Note';
 
 
-export class NotesPage extends Component {
+export const NotesPage = () => {
+    const [noteId, setNoteId] = React.useState();
+    const [modified, setModified] = React.useState(false);
 
-    render() {
-        return (
-            <div>
-                <Sidebar />
-                <Note />
-            </div>
-        );
-    }
+    const handleNote = (noteId) => {
+        setNoteId(noteId);
+        console.log(noteId);
+    };
+    
+    const handleNoteModified = (isModified) => {
+        setModified(isModified);
+    };
+
+    return (
+        <div>
+            <Sidebar handleNote={handleNote} handleNoteModified={handleNoteModified} />
+            <Note noteId={noteId} isModified={modified} handleNoteModified={handleNoteModified} />
+        </div>
+    );
 }
