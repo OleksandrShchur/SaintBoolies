@@ -31,7 +31,7 @@ export default function ModalAddGroup(props) {
     const responce = await api.post(`Group`, data);
 
     if (responce.status >= 400) {
-      alert("Failed to add new group");
+      alert('Failed to add new group');
     }
     else {
       onSave();

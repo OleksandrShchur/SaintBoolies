@@ -6,7 +6,6 @@ using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
 using SaintBoolies.Shared.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -65,15 +64,6 @@ namespace SaintBoolies.Core.Services
 
             return user;
         } 
-
-        public List<UserListViewModel> GetAllUsers()
-        {
-            var users = _context.Users
-                .Select(u => _mapper.Map<User, UserListViewModel>(u))
-                .ToList();
-
-            return users;
-        }
 
         public UserProfileViewModel Authenticate(UserLoginViewModel user)
         {

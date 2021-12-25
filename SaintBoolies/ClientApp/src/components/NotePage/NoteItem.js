@@ -14,9 +14,19 @@ function NoteItem(props) {
         <div class='NoteButton'>
             <Button onClick={handleClick}>
                 <div className='NoteName'>{props.text}</div>
-            </Button>    
-                <div className='NoteNameButton'><ModalDeleteItem id={noteId} title='Delete this note?' onSave={onSave} /></div>
-                <div className='NoteNameButton'><ModalEditNote noteId={noteId} onSave={onSave} title={text} text={content} groupId={groupId} handleNoteModified={handleNoteModified} /></div>                
+            </Button>
+            <div className='NoteNameButton'>
+                <ModalDeleteItem id={noteId} title='Delete this note?' onSave={onSave} />
+            </div>
+            <div className='NoteNameButton'>
+                <ModalEditNote noteId={noteId}
+                    onSave={onSave}
+                    title={text}
+                    text={content}
+                    groupId={groupId}
+                    handleNoteModified={handleNoteModified}
+                />
+            </div>
         </div>
     )
 }

@@ -35,7 +35,7 @@ export default function ModalEditNote(props) {
         const responce = await api.put(`Note/${noteId}`, data);
 
         if (responce.status >= 400) {
-            alert("Failed to update note");
+            alert('Failed to update note');
         }
         else {
             onSave();

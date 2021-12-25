@@ -56,11 +56,11 @@ export default function ModalDeleteItem(props) {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
       >
         <DialogContent>
-          <DialogContentText id="alert-dialog-description" style={Text}>{title}</DialogContentText>
+          <DialogContentText id='alert-dialog-description' style={Text}>{title}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} style={ButtonNo}>No</Button>

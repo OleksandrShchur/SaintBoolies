@@ -40,4 +40,4 @@ const Note = (props) => {
     )
 }
 
-export default Note
+export default Note;

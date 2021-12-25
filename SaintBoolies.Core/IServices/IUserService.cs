@@ -11,8 +11,6 @@ namespace SaintBoolies.Core.IServices
 
         User GetByEmail(string email);
 
-        List<UserListViewModel> GetAllUsers();
-
         UserProfileViewModel Authenticate(UserLoginViewModel user);
     }
 }

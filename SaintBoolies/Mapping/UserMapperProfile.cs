@@ -19,10 +19,6 @@ namespace SaintBoolies.Mapping
             CreateMap<User, UserProfileViewModel>();
 
             CreateMap<UserProfileViewModel, User>();
-
-            CreateMap<User, UserListViewModel>();
-
-            CreateMap<UserListViewModel, User>();
         }
     }
 }

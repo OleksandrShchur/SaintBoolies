@@ -35,7 +35,7 @@ export default function ModalAddNote(props) {
         const responce = await api.post(`Note`, data);
 
         if (responce.status >= 400) {
-            alert("Failed to add new note");
+            alert('Failed to add new note');
         }
         else {
             onSave();

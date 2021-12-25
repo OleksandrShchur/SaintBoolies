@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
-import NoteItem from "./NoteItem";
+import NoteItem from './NoteItem';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -37,7 +37,14 @@ const Sidebar = (props) => {
 
     for (let i = 0; i < data[index].notes?.length; i++) {
       items.push(
-        <NoteItem noteId={data[index].notes[i].id} text={data[index].notes[i].title} handleNote={handleNote} onSave={onSave} content={data[index].notes[i].text} groupId={data[index].id} handleNoteModified={handleNoteModified} />
+        <NoteItem noteId={data[index].notes[i].id}
+          text={data[index].notes[i].title}
+          handleNote={handleNote}
+          onSave={onSave}
+          content={data[index].notes[i].text}
+          groupId={data[index].id}
+          handleNoteModified={handleNoteModified}
+        />
       );
     }
 
@@ -48,7 +55,7 @@ const Sidebar = (props) => {
     const responce = await api.get(`Group/GetUserGroups?userId=${userId}`);
 
     if (responce.status >= 400) {
-      alert("Something went wrong");
+      alert('Something went wrong');
     }
     else {
       setData(responce.data);
@@ -70,7 +77,7 @@ const Sidebar = (props) => {
       items.push(
         <>
           <Accordion style={AccordionStyle}>
-            <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+            <AccordionSummary aria-controls='panel1a-content' id='panel1a-header'>
               <Typography className='NoteGroupName'>{data[i].name}</Typography>
               <ModalEditName className='NoteGroupButton' groupId={data[i].id} onSave={onSave} title={data[i].name} />
               <ModalDeleteItem className='NoteGroupButton' id={data[i].id} title='Delete the group with all notes?' onSave={onSave} />
@@ -92,18 +99,18 @@ const Sidebar = (props) => {
   return (
     <div class='Sidebar'>
 
-      <div class="SidebaHeader">
+      <div class='SidebaHeader'>
         <Box>
           <TextField
-            label="Search"
-            variant="outlined"
-            size="small"
-            color="#128EE5"
+            label='Search'
+            variant='outlined'
+            size='small'
+            color='#128EE5'
             style={SidebarSearch} />
         </Box>
       </div>
 
-      <div className="SidebarMenu">
+      <div className='SidebarMenu'>
         {renderSidebar()}
         <div className='AddNewGroup'>
           <ModalAddGroup userId={userId} onSave={onSave} />

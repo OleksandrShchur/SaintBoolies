@@ -16,7 +16,7 @@ export function SignUp() {
     event.preventDefault();
 
     if (event.target[SignUpEnum.Password].value !== event.target[SignUpEnum.RepeatPassword].value) {
-      alert("Password does not match!");
+      alert('Password does not match!');
     }
     else {
       const data = {
@@ -31,7 +31,7 @@ export function SignUp() {
         history.push(`/NotesPage/${responce.data.id}`);
       }
       else {
-        alert("Sign up failed!");
+        alert('Sign up failed!');
       }
     }
   };
@@ -82,7 +82,7 @@ export function SignUp() {
               </Button>
             </div>
             <div className='LoginText'>
-              <p>Are you registered? <Link path to="/SignIn">Sign In</Link></p>
+              <p>Are you registered? <Link path to='/SignIn'>Sign In</Link></p>
             </div>
           </form>
         </Card>
