@@ -21,7 +21,7 @@ export default class App extends Component {
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/AboutUs' component={AboutUs} />
         <Route exact path='/ContactUs' component={ContactUs} />
-        <Route exact path='/NotesPage' component={NotesPage} />
+        <Route exact path='/NotesPage/:userId' component={NotesPage} />
       </Switch>
     </BrowserRouter>
     );

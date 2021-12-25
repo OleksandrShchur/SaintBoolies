@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SaintBoolies.Shared.Models;
-using System;
+﻿using SaintBoolies.Shared.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SaintBoolies.Core.IServices
@@ -16,10 +12,12 @@ namespace SaintBoolies.Core.IServices
 
         Task PutOneNote(int id, Note note);
 
-        Task PostOneNote(Note note);
+        Task<Note> PostOneNote(Note note);
 
         Task DeleteOneNote(int id);
 
         bool IfNoteExists(int id);
+
+        IList<Note> GetAllNotesInGroup(int groupId);
     }
 }

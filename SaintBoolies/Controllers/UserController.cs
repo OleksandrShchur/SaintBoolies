@@ -34,15 +34,6 @@ namespace SaintBoolies.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("GetUsers")]
-        public IActionResult GetUsers()
-        {
-            var result = _userService.GetAllUsers();
-
-            return Ok(result);
-        }
-
         [HttpPost]
         [Route("Login")]
         [AllowAnonymous]

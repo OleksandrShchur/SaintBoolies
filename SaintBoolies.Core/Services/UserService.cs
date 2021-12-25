@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SaintBoolies.Core.Infrustructure;
 using SaintBoolies.Core.IServices;
 using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
 using SaintBoolies.Shared.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,15 +14,19 @@ namespace SaintBoolies.Core.Services
     public class UserService : BaseService<User>, IUserService
     {
         private readonly IMapper _mapper;
+        private readonly IGroupService _groupService;
+        private readonly static string defaultGroup = "My notes";
         public UserService(
             AppDbContext context,
-            IMapper mapper)
+            IMapper mapper,
+            IGroupService groupService)
             : base(context)
         {
             _mapper = mapper;
+            _groupService = groupService;
         }
 
-        public async Task<User> Create(UserRegistrationViewModel user)
+        public async Task<UserProfileViewModel> Create(UserRegistrationViewModel user)
         {
             if (UserExistence(user.Email))
             {
@@ -40,19 +44,26 @@ namespace SaintBoolies.Core.Services
                 throw new Exception("Adding failed");
             }
 
-            return result;
+            // create default group for new user
+            var groupViewModel = new GroupCreateViewModel()
+            {
+                UserId = result.Id,
+                Title = defaultGroup
+            };
+            await _groupService.PostOneGroup(groupViewModel);
+            var mappedUser = _mapper.Map<User, UserProfileViewModel>(result);
+
+            return mappedUser;
         }
 
-        public User GetByEmail(string email) => _context.Users.FirstOrDefault(u => u.Email == email);
-
-        public List<UserListViewModel> GetAllUsers()
+        public User GetByEmail(string email)
         {
-            var users = _context.Users
-                .Select(u => _mapper.Map<User, UserListViewModel>(u))
-                .ToList();
+            var user = _context.Users
+                .Include(u => u.Groups)
+                .FirstOrDefault(u => u.Email == email);
 
-            return users;
-        }
+            return user;
+        } 
 
         public UserProfileViewModel Authenticate(UserLoginViewModel user)
         {

@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import RedirectBackToHome from './RedirectBackToHome';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import SignInEnum from '../../enums/SignInEnum';
 import api from '../../services/apiService';
 import '../../styles/LoginRegistrationForm.css'
@@ -20,12 +20,13 @@ export function SignIn() {
       'password': event.target[SignInEnum.Password].value
     };
     const responce = await api.post(`User/Login`, data);
+    console.log(responce);
 
     if (responce.status === 200) {
-      history.push("/NotesPage");
+      history.push(`/NotesPage/${responce.data.id}`);
     }
     else {
-      alert("Sign in failed!");
+      alert('Sign in failed!');
     }
   };
 
@@ -60,7 +61,7 @@ export function SignIn() {
               </Button>
             </div>
             <div className='LoginText'>
-              <p>Are you not registered? <Link path to="/SignUp">Sign Up</Link></p>
+              <p>Are you not registered? <Link path to='/SignUp'>Sign Up</Link></p>
             </div>
           </form>
         </Card>

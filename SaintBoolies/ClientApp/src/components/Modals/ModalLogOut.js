@@ -25,31 +25,31 @@ export default function LogOutDialog() {
     const responce = await api.get(`User/Logout`);
 
     if (responce.status === 200) {
-      history.push("/");
+      history.push('');
       setOpen(false);
     }
     else {
-      alert("An unhandled error appear. Please, try again or contact us");
+      alert('An unhandled error appear. Please, try again or contact us');
       setOpen(false);
     }
-  }
+  };
 
   const ButtonNo = {
     border: 'solid 1px',
     borderColor: '#128EE5',
     color: '#128EE5',
     padding: '5px 40px'
-  }
+  };
 
   const ButtonYes = {
     backgroundColor: '#128EE5',
     color: '#fff',
     padding: '5px 40px'
-  }
+  };
 
   const Text = {
     color: '#000'
-  }
+  };
 
   return (
     <div className='ModalWindow'>
@@ -57,11 +57,11 @@ export default function LogOutDialog() {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
       >
         <DialogContent>
-          <DialogContentText id="alert-dialog-description" style={Text}>Do you really want to exit?</DialogContentText>
+          <DialogContentText id='alert-dialog-description' style={Text}>Do you really want to exit?</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} style={ButtonNo}>No</Button>

@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SaintBoolies.Core.IServices;
-using SaintBoolies.Db.Contexts;
 using SaintBoolies.Shared.Models;
 
 namespace SaintBoolies.Controllers
@@ -70,12 +67,6 @@ namespace SaintBoolies.Controllers
             await _noteService.DeleteOneNote(id);
 
             return Ok();
-        }
-
-        [NonAction]
-        private bool NoteExists(int id)
-        {
-            return _noteService.IfNoteExists(id);
         }
     }
 }

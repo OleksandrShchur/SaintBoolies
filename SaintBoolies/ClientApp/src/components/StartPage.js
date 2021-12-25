@@ -24,7 +24,7 @@ export class StartPage extends Component {
               borderRadius: 5,
               backgroundColor: '#128EE5',
               padding: '12px 40px',
-              fontSize: "18px",
+              fontSize: '18px',
               color: '#fff'
             }}>Sign Up</Button>          
           </Link>
@@ -34,7 +34,7 @@ export class StartPage extends Component {
                 borderRadius: 5,
                 border: '1px solid #128EE5',
                 padding: '12px 40px',
-                fontSize: "18px",
+                fontSize: '18px',
                 color: '#128EE5'
               }}>Sign In</Button>
             </Link>

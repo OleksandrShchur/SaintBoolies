@@ -70,6 +70,7 @@ namespace SaintBoolies
             var mapperConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new UserMapperProfile());
+                mc.AddProfile(new GroupMapperProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

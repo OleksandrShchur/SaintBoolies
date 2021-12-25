@@ -7,6 +7,8 @@ namespace SaintBoolies.Shared.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+        
+        public int UserId { get; set; }
 
         public IList<Note> Notes { get; set; }
     }
